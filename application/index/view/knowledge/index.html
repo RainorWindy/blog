@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="_static_resource/css/common.css">
+    <link rel="stylesheet" href="_static_resource/css/iconfont.css">
+    <link rel="stylesheet" href="_static_resource/css/body.css">
+    <title>Knowledge</title>
+</head>
+
+<body>
+    {include file="pub/header" /}
+
+    <!-- body start -->
+    <div class="clearboth"></div>
+    <div class="container">
+        <!-- left start -->
+        <div class="bleft">
+            <div class="sharebox sims">
+                <div class="sharetitle toppv">
+                    <ul>
+                        {if condition="isset($category_by)"}
+                        <li class="scate" setcategory_by="0" setnid="{$nid}">全部</li>
+                        {volist name="sonL" id="vk"}
+                        <li class="scate <?php if($category_by == $vk['navigate_id']){echo 'sharetitle_active';}?>"
+                            setcategory_by="{$vk.navigate_id}" setnid="{$nid}">
+                            {$vk.navigate_name}</li>
+                        {/volist}
+                        {else/}
+                        <li class="scate" setcategory_by="0" setnid="{$nid}">全部</li>
+                        {volist name="sonL" id="vk"}
+                        <li class="scate" setcategory_by="{$vk.navigate_id}" setnid="{$nid}">{$vk.navigate_name}</li>
+                        {/volist}
+                        {/if}
+                        <!-- <li>PHP后端</li>
+                        <li>其他技术</li> -->
+                    </ul>
+                </div>
+                <div class="sharecontent">
+                    {if condition="$contentL"}
+                    {volist name="contentL" id="cv"}
+                    <div class="article_list">
+                        <h4>{$cv.title}</h4>
+                        <p class="isshortinfo"><small>发布时间:{if condition="$cv.issuetime"}{$cv.issuetime|date="Y-m-d
+                                H:i:s",###}{else/}{$cv.issuetime|default="未设置"}{/if} 编辑：[ <a href="javascript:void(0)"
+                                    style="color:#1d89e8;text-decoration:none">站长</a> ] 分类：[
+                                <span style="color:#1d89e8">分享</span> ]</small></p>
+                        <div class="article_intro">
+                            <figure><img src="http://www.perfind.cn/Public/style/img/img.jpg" alt=""></figure>
+                            <div class="article_word">
+                                一、队列使用场景：为什么需要队列在web开发中，我们经常会遇到需要处理批量任务的时候，这些批量任务可能是用户提交的，也可能是当系统被某个事件触发时需要进行批量处理的，面对这样的
+                                任务，如果是用户提交的批量任务，初级程序员只能让用户触发提交动作后，等待服务器
+                            </div>
+                            <div class="debtn">
+                                <div class="clearboth"></div>
+                                <a
+                                    href="{:url('/index/article/aprev',array('nid'=>$cv.topcate_id,'category_by'=>$cv.cid,'itemsid'=>$cv.art_id))}">了解详情</a>
+                            </div>
+                        </div>
+                    </div>
+                    {/volist}
+                    {else/}
+                    <p style="color: #666;">相关资源暂无</p>
+                    {/if}
+                </div>
+            </div>
+        </div>
+        <!-- left end -->
+        <!-- right start -->
+        <div class="bright">
+            {include file="pub/bright_index" /}
+        </div>
+        <!-- right end -->
+    </div>
+    <!-- body end-->
+    <!-- footer -->
+    <div class="clearboth"></div>
+    {include file="pub/footer"/}
+</body>
+{if condition="!isset($category_by)"}
+<script>
+    $(document).ready(function () {
+        $("div.toppv").find("li").eq(0).addClass("sharetitle_active");
+    })
+</script>
+{/if}
+
+</html>

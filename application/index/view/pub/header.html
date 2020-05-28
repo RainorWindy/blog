@@ -1,0 +1,52 @@
+<script src="_static_resource/js/jquery.min.js"></script>
+<header id="header">
+    <div id="nav">
+        <div class="logoul nav_ul">
+            <a href="/" class="logo">Personal-Blog-Net|<font>My-life</font></a>
+        </div>
+        <ul class="menuul nav_ul">
+            {volist name="navi" id="vo"}
+            <li class="ls1 hson ls1_cl"><a
+                    href="{:url('/index/Rou/index',array('nid'=>$vo.navigate_id))}">{$vo.navigate_name}</a>
+                <ul class="ls1_ul share_ul">
+                    {volist name="vo.children" id="vv"}
+                    <li><a
+                            href="{:url('/index/Rou/index',array('nid'=>$vo.navigate_id,'category_by'=>$vv.navigate_id))}">{$vv.navigate_name}</a>
+                    </li>
+                    {/volist}
+                </ul>
+            </li>
+            {/volist}
+            <!-- <li class="ls1 hson ls1_cl"><a href="{:url('/index/share/index')}">资源共享</a>
+                <ul class="ls1_ul share_ul">
+                    <li><a href="javascript:void(0)">技术手册</a></li>
+                    <li><a href="javascript:void(0)">建站模板</a></li>
+                    <li><a href="javascript:void(0)">网页插件</a></li>
+                </ul>
+            </li>
+            <li class="ls1 hson ls1_cl"><a href="{:url('/index/life/index')}">我的生活</a>
+                <ul class="ls1_ul mylife_ul">
+                    <li><a href="javascript:void(0)">我的相册</a></li>
+                    <li><a href="javascript:void(0)">我的日志</a></li>
+                </ul>
+            </li> -->
+        </ul>
+        <div class="formul nav_ul">
+            <form action="#" method="post" autocomplete="off">
+                <!-- <div>
+                    <label for="">资源共享</label>
+                    <ul class="type_list"></ul>
+                </div> -->
+                <input type="text" id="keyword" name="keyword" placeholder="请输入关键词">
+                <button type="button" class="icon iconfont searchBtn">&#xe783;</button>
+            </form>
+        </div>
+        <!-- 手机端导航按钮 -->
+        <button class="mobileBtn">
+            <span class="mobileBtnline"></span>
+            <span class="mobileBtnline"></span>
+            <span class="mobileBtnline"></span>
+        </button>
+        <!-- 手机端导航按钮 -->
+    </div>
+</header>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="_static_resource/css/common.css">
+    <link rel="stylesheet" href="_static_resource/css/iconfont.css">
+    <link rel="stylesheet" href="_static_resource/css/body.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- header -->
+    {include file="pub/header" /}
+    <!-- header -->
+    <div class="clearboth"></div>
+    <div class="container">
+        <!-- bleft start -->
+        <div class="bleft">
+            <div class="sharebox sims">
+                <div class="sharetitle simi">
+                    <h3>当前位置:首页>{$topcate}>{$cate}</h3>
+                    <div class="contentbox">
+                        <h4>{$detail.title}</h4>
+                        <p class="isshortinfos"><small>发布时间: {$detail.issuetime|date='Y-m-d',###} 编辑：[ <a
+                                    href="javascript:void(0)" style="color:#1d89e8;text-decoration:none"> 站长</a> ] 分类：[
+                                <span style="color:#1d89e8">{$cate}</span> ] 浏览次数：[ <span
+                                    style="color:#1d89e8">{$detail.clicktime}</span> ]</small></p>
+                        <article>
+                            {$detail.content|html_entity_decode=###}
+                        </article>
+                    </div>
+
+                    <!-- 上一篇&&下一篇 -->
+                    <div class="pre_and_next">
+                        <p class="prea">上一篇:{if condition="$prevone"}<a
+                                href="{:url('/index/article/aprev',array('nid'=>$prevone.topcate_id,'category_by'=>$prevone.cid,'itemsid'=>$prevone.art_id))}">{$prevone.title}</a>{else/}<span
+                                class="" style="color: #666;margin-left: 5px;">无</span>{/if}</p>
+                        <p class="nexta">下一篇:{if condition="$nextone"}<a
+                                href="{:url('/index/article/aprev',array('nid'=>$nextone.topcate_id,'category_by'=>$nextone.cid,'itemsid'=>$nextone.art_id))}">{$nextone.title}</a>{else/}<span
+                                class="" style="color: #666;margin-left: 5px;">无</span>{/if}</p>
+                    </div>
+                    <!-- 上一篇&&下一篇 -->
+                </div>
+            </div>
+            <div class="clearboth"></div>
+            <div class="sharebox sims">
+                <div class="sharetitle simi">
+                    <h3>相关内容</h3>
+                    <div class="relacontentbox">
+                        {if condition="$relaList"}
+                        {volist name="relaList" id="rel"}
+                        <p class="relalist"><a
+                                href="{:url('/index/article/aprev',array('nid'=>$rel.topcate_id,'category_by'=>$rel.cid,'itemsid'=>$rel.art_id))}">{$rel.title}</a>
+                        </p>
+                        {/volist}
+                        {else/}
+                        <p class="relalist" style="color: #666;">暂无相关数据</p>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearboth"></div>
+            <div class="sharebox sims">
+                <div class="sharetitle simi">
+                    <h3>主题评论</h3>
+                    <div class="commentbox">
+                        <P style="color: #666;">暂不开放</P>
+                        <!-- <div class="commentlist">
+                            <div class="c_list">
+                                <div class="c_lefthead">
+                                    <figure><img src="_static_resource/img/testhead.jpg" alt="用户头像"></figure>
+                                </div>
+                                <div class="c_rightcontent">
+                                    <div class="cuser">匿名读友 2020年03月05日 21:15</div>
+                                    <div class="ccontent">不必和别人攀比家庭，一家人都平平安安，和和睦睦，就是最大的幸福</div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- bright end -->
+        <!-- right start -->
+        <div class="bright">
+            {include file="pub/bright_index" /}
+        </div>
+
+        <!-- right end -->
+    </div>
+    <!-- footer -->
+    <div class="clearboth"></div>
+    {include file="pub/footer" /}
+    <!-- footer -->
+</body>
+
+</html>

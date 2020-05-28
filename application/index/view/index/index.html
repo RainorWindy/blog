@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="_static_resource/css/common.css">
+    <link rel="stylesheet" href="_static_resource/css/iconfont.css">
+    <link rel="stylesheet" href="_static_resource/css/body.css">
+    <title>Document</title>
+</head>
+
+<body>
+    {include file="pub/header" /}
+    <!-- body start -->
+    <div class="clearboth"></div>
+    <div class="container">
+        <div class="banner"><img src="_static_resource/img/testbanner.jpg" alt="轮播图" style="width: 100%;"></div>
+        <!-- left start -->
+        <div class="" style="height: 10px;"></div>
+        <div class="bleft">
+            <div class="sharebox sims">
+                <div class="sharetitle toppv">
+                    <ul>
+                        {volist name="arr1" id="nar1"}
+                        <li class="apart_one_nav <?php if($nar1['key'] == 1){echo 'sharetitle_active';}?>">
+                            {$nar1.navigate_name}</li>
+                        {/volist}
+                        <!-- <li>PHP后端</li>
+                        <li>其他技术</li> -->
+                    </ul>
+                </div>
+                {volist name="arr1" id="arr1"}
+                <div class="sharecontent apart_one <?php if($arr1['key']!=1){echo 'ahidden';}?>">
+                    <!-- ajax apart one -->
+                    <div class="myitem">
+                        <ul>
+                            {if condition="$arr1.content"}
+                            {volist name="$arr1.content" id="arr1_son"}
+                            <li><small class="istime">{$arr1_son.issuetime|date="Y-m-d",###}</small><a
+                                    href="{:url('/index/article/aprev',array('nid'=>$arr1_son.topcate_id,'category_by'=>$arr1_son.cid,'itemsid'=>$arr1_son.art_id))}">{$arr1_son.title}</a>
+                            </li>
+                            {/volist}
+                            {else/}
+                            <p style="color: #666;">相关资源暂无</p>
+                            {/if}
+                        </ul>
+                    </div>
+                    <!-- ajax apart one -->
+                </div>
+                {/volist}
+            </div>
+            <div class="clearboth"></div>
+            <div class="sharebox sims">
+                <div class="sharetitle toppv">
+                    <ul>
+                        {volist name="arr2" id="nar2"}
+                        <li class="apart_two_nav <?php if($nar2['key'] == 1){echo 'sharetitle_active';}?>">
+                            {$nar2.navigate_name}</li>
+                        {/volist}
+                        <!-- <li class="apart_two_nav">建站模板</li>
+                        <li class="apart_two_nav">网页插件</li> -->
+                    </ul>
+                </div>
+                {volist name="arr2" id="arr2"}
+                <div class="sharecontent apart_two <?php if($arr2['key']!=1){echo 'ahidden';}?>">
+                    <!-- ajax apart one -->
+                    <div class="myitem">
+                        <ul>
+                            {if condition="$arr2.content"}
+                            {volist name="$arr2.content" id="arr2_son"}
+                            <li><small class="istime">{$arr2_son.issuetime|date="Y-m-d",###}</small><a
+                                    href="{:url('/index/article/aprev',array('nid'=>$arr2_son.topcate_id,'category_by'=>$arr2_son.cid,'itemsid'=>$arr2_son.art_id))}">{$arr2_son.title}</a>
+                            </li>
+                            {/volist}
+                            {else/}
+                            <p style="color: #666;">相关资源暂无</p>
+                            {/if}
+                        </ul>
+                    </div>
+                    <!-- ajax apart one -->
+                </div>
+                {/volist}
+            </div>
+            <div class="clearboth"></div>
+            <div class="sharebox sims">
+                <div class="sharetitle simi">
+                    <h3>我的日志</h3>
+                </div>
+                <div class="sharecontent">
+                    {if condition="$myBlog"}
+                    {volist name="myBlog" id="myblog"}
+                    <div class="article_list">
+                        <h4>{$myblog.title}</h4>
+                        <p class="isshortinfo"><small>发布时间: {$myblog.issuetime|date='Y-m-d',###} 编辑：[ <a
+                                    href="javascript:void(0)" style="color:#1d89e8;text-decoration:none">站长</a> ] 分类：[
+                                <span style="color:#1d89e8">分享</span> ]</small></p>
+                        <div class="article_intro">
+                            <figure><img src="http://www.perfind.cn/Public/style/img/img.jpg" alt=""></figure>
+                            <div class="article_word">
+                                一、队列使用场景：为什么需要队列在web开发中，我们经常会遇到需要处理批量任务的时候，这些批量任务可能是用户提交的，也可能是当系统被某个事件触发时需要进行批量处理的，面对这样的
+                                任务，如果是用户提交的批量任务，初级程序员只能让用户触发提交动作后，等待服务器
+                            </div>
+                            <div class="debtn">
+                                <div class="clearboth"></div>
+                                <a
+                                    href="{:url('/index/article/aprev',array('nid'=>$myblog.topcate_id,'category_by'=>$myblog.cid,'itemsid'=>$myblog.art_id))}">了解详情</a>
+                            </div>
+                        </div>
+                    </div>
+                    {/volist}
+                    <div class="page">{$pageBlog}</div>
+                    {else/}
+                    <p style="color: #666;">相关资源暂无</p>
+                    {/if}
+                </div>
+            </div>
+
+            <div class="clearboth"></div>
+            <div class="sharebox sims">
+                <div class="sharetitle simi">
+                    <h3>我的相册</h3>
+                </div>
+                <div class="sharecontent photobox">
+                    <ul>
+                        {if condition="$photo"}
+                        {volist name="photo" id="ph"}
+                        <li>
+                            <div class="photo_lbox">
+                                <div><img src="{$ph.head_thumb}" alt="{$ph.title}"></div>
+                                <div>
+                                    <p class="photo_title">{$ph.title}</p>
+                                    <p class="photo_time">更新时间:<span>{$ph.updatetime|date="Y-m-d",###}</span><a
+                                            href="{:url('/index/life/showphoto',array('nid'=>$ph.topcate_id,'category_by'=>$ph.cid,'pname'=>$ph.photo_id))}"
+                                            class="photoBtn">查看详情</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        {/volist}
+                        {else/}
+                        <p style="color: #666;">相关资源暂无</p>
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- left end -->
+
+        <!-- right start -->
+        <div class="bright">
+            {include file="pub/bright_index" /}
+        </div>
+
+        <!-- right end -->
+    </div>
+    <!-- body end-->
+    <!-- footer -->
+    <div class="clearboth"></div>
+    {include file="pub/footer"/}
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<div class="siteinfo sims">
+    <div class="siteinfotitle simi">
+        <h3>站长名片</h3>
+        <div class="simi_body">
+            <p>职业：<span class="simi_body_name">{$admininfo.admin_occupation}</span></p>
+            <p>位置：<span class="simi_body_name">{$admininfo.admin_location}</span></p>
+            <p>邮箱：<span class="simi_body_name">{$admininfo.admin_email}</span></p>
+            <p>微信：<span class="simi_body_name">{$admininfo.admin_wechat}</span></p>
+        </div>
+    </div>
+</div>
+<div class="clearboth"></div>
+<div class="siteinfo sims">
+    <div class="siteinfotitle simi">
+        <h3>最新日志</h3>
+        <div class="simi_body">
+            <ul>
+                {if condition="$newAlst"}
+                {volist name="newAlst" id="newAlst"}
+                <li><a
+                        href="{:url('/index/article/aprev',array('nid'=>$newAlst.topcate_id,'category_by'=>$newAlst.cid,'itemsid'=>$newAlst.art_id))}">{$newAlst.title}</a>
+                </li>
+                {/volist}
+                {else/}
+                <li style="color:#666;">相关数据暂无</li>
+                {/if}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="clearboth"></div>
+<div class="siteinfo sims">
+    <div class="siteinfotitle simi">
+        <h3>点击排行</h3>
+        <div class="simi_body">
+            <ul>
+                {if condition="$clickL"}
+                {volist name="clickL" id="clickL"}
+                <li><a
+                        href="{:url('/index/article/aprev',array('nid'=>$clickL.topcate_id,'category_by'=>$clickL.cid,'itemsid'=>$clickL.art_id))}">{$clickL.title}</a>
+                </li>
+                {/volist}
+                {else/}
+                <li style="color:#666;">相关数据暂无</li>
+                {/if}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="clearboth"></div>
+<div class="siteinfo sims">
+    <div class="siteinfotitle simi">
+        <h3>热门推荐</h3>
+        <div class="simi_body">
+            <ul>
+                {if condition="$remL"}
+                {volist name="remL" id="remL"}
+                <li><a
+                        href="{:url('/index/article/aprev',array('nid'=>$remL.topcate_id,'category_by'=>$remL.cid,'itemsid'=>$remL.art_id))}">{$remL.title}</a>
+                </li>
+                {/volist}
+                {else/}
+                <li style="color:#666;">相关数据暂无</li>
+                {/if}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="clearboth"></div>
+<div class="siteinfo sims">
+    <div class="siteinfotitle simi">
+        <h3>相册更新</h3>
+        <div class="simi_body">
+            <ul>
+                {if condition="$photo"}
+                {volist name="photo" id="upp"}
+                <li><a
+                        href="{:url('/index/life/showphoto',array('nid'=>$upp.topcate_id,'category_by'=>$upp.cid,'pname'=>$upp.photo_id))}">{$upp.title}</a>
+                </li>
+                {/volist}
+                {else/}
+                <li style="color:#666;">相关数据暂无</li>
+                {/if}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="clearboth"></div>
+<div class="siteinfo sims">
+    <div class="siteinfotitle simi">
+        <h3>站点信息</h3>
+        <div class="simi_body">
+            <p>建站时间：<span class="simi_body_name">{$sysinfo.start_time|date="Y-m-d",###}至今</span></p>
+            <p>建站目的：<span class="simi_body_name">{$sysinfo.create_purpose}</span></p>
+            <p>使用语言：<span class="simi_body_name">{$sysinfo.use_languge}</span></p>
+            <p>使用框架：<span class="simi_body_name">{$sysinfo.use_frame}</span></p>
+            <p>运行环境：<span class="simi_body_name">{$sysinfo.run_envi}</span></p>
+        </div>
+    </div>
+</div>
+<div class="clearboth"></div>
+<div class="siteinfo sims">
+    <div class="siteinfotitle simi">
+        <h3>站点标签</h3>
+        <div class="simi_body">
+            <div class="tags">
+                {volist name="tags" id="tag"}
+                <a href="javascript:void(0)">{$tag.tag_name}</a>
+                {/volist}
+            </div>
+        </div>
+    </div>
+</div>

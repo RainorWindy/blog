@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="_static_resource/css/common.css">
+    <link rel="stylesheet" href="_static_resource/css/iconfont.css">
+    <link rel="stylesheet" href="_static_resource/css/body.css">
+    <title>Knowledge</title>
+</head>
+
+<body>
+    {include file="pub/header" /}
+
+    <!-- body start -->
+    <div class="clearboth"></div>
+    <div class="container">
+        <!-- left start -->
+        <div class="bleft">
+            <div class="sharebox sims">
+                <div class="sharetitle toppv">
+                    <ul>
+                        <li class="" style="padding: 0;border-bottom: transparent;">搜索到{$count}个结果</li>
+                    </ul>
+                    <span class="resultKeyord">关键词:{$keyword}</span>
+                </div>
+                <div class="sharecontent">
+                    {if condition="$list"}
+                    {volist name="list" id="list"}
+                    <div class="article_list">
+                        <h4>{$list.title}</h4>
+                        <p class="isshortinfo"><small>发布时间: {$list.issuetime|date="Y-m-d",###} 编辑：[ <a
+                                    href="javascript:void(0)" style="color:#1d89e8;text-decoration:none">站长</a> ] 分类：[
+                                <span style="color:#1d89e8">{$list.navigate_name}</span> ]</small></p>
+                        <div class="article_intro">
+                            <figure><img src="http://www.perfind.cn/Public/style/img/img.jpg" alt=""></figure>
+                            <div class="article_word">
+                                一、队列使用场景：为什么需要队列在web开发中，我们经常会遇到需要处理批量任务的时候，这些批量任务可能是用户提交的，也可能是当系统被某个事件触发时需要进行批量处理的，面对这样的
+                                任务，如果是用户提交的批量任务，初级程序员只能让用户触发提交动作后，等待服务器
+                            </div>
+                            <div class="debtn">
+                                <div class="clearboth"></div>
+                                <a
+                                    href="{:url('/index/article/aprev',array('nid'=>$list.topcate_id,'category_by'=>$list.cid,'itemsid'=>$list.art_id))}">了解详情</a>
+                            </div>
+                        </div>
+                    </div>
+                    {/volist}
+                    <div class="page">{$page}</div>
+                    {else/}
+                    <p style="color:#666">相关数据暂无</p>
+                    {/if}
+                </div>
+            </div>
+        </div>
+        <!-- left end -->
+
+        <!-- right start -->
+        <div class="bright">
+            {include file="pub/bright_index" /}
+        </div>
+
+        <!-- right end -->
+    </div>
+    <!-- body end-->
+    <!-- footer -->
+    <div class="clearboth"></div>
+    {include file="pub/footer"/}
+</body>
+
+</html>
